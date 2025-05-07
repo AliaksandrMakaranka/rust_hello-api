@@ -1,33 +1,89 @@
 # 🚀 Hello World API (Rust + Actix Web)
-A simple web API built with [Actix Web](https://actix.rs/) that responds with "Hello world" at the /hello endpoint. This is a basic starter project for learning how to build and test HTTP APIs in Rust.
+A RESTful web API built with [Actix Web](https://actix.rs/) that provides various endpoints for user management and system health checks. This project demonstrates how to build and test HTTP APIs in Rust with proper project structure and testing.
+
 ## 📦 Requirements
 - Rust: https://www.rust-lang.org/tools/install
 - Cargo (comes with Rust)
+
 ## 🔧 Setup
 Clone the repository and build the project:
+```bash
 git clone https://github.com/your-username/hello-world-api.git && cd hello-world-api
 cargo build
+```
+
 ## 🚀 Run the Server
 Start the API server:
+```bash
 cargo run
+```
 The server will be running at http://localhost:3033
-## 🔍 Test the Endpoint
-Test in browser or using curl:
+
+## 🔍 Available Endpoints
+
+### Hello World
+```bash
 curl http://localhost:3033/hello
+```
 Expected response:
+```
 Hello world from RUST with love
+```
+
+### Health Check
+```bash
+curl http://localhost:3033/health
+```
+Returns system health status and version information.
+
+### User Management
+
+#### List All Users
+```bash
+curl http://localhost:3033/users
+```
+
+#### Get User by ID
+```bash
+curl http://localhost:3033/users/{id}
+```
+
+#### Create New User
+```bash
+curl -X POST http://localhost:3033/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John Doe", "email": "john@example.com"}'
+```
+
 ## 🧪 Run Tests
-Run unit or integration tests for the /hello endpoint:
+Run all tests:
+```bash
 cargo test
-Expected output:
-running 1 test
-test tests::test_hello_endpoint ... ok
+```
+
+The test suite includes:
+- Hello endpoint tests
+- Health check endpoint tests
+- User management tests (create, read, list)
+- Error handling tests
+
 ## 📁 Project Structure
+```
 src/
-└── main.rs     # Main entry point with route definition
-Cargo.toml      # Project dependencies and metadata
+├── main.rs          # Main entry point and server configuration
+├── handlers/        # Request handlers
+│   ├── hello.rs     # Hello endpoint handler
+│   ├── health.rs    # Health check handler
+│   └── users.rs     # User management handlers
+├── models/          # Data models
+│   └── user.rs      # User-related structures
+└── tests/           # Integration tests
+    └── mod.rs       # Test suite
+```
+
 ## 🛠 Built With
 - Rust: https://www.rust-lang.org/
 - Actix Web: https://actix.rs/
+
 ## 📜 License
 MIT License — feel free to use this project for learning or personal use.
