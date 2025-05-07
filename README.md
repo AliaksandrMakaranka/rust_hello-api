@@ -8,7 +8,7 @@ A RESTful web API built with [Actix Web](https://actix.rs/) that provides variou
 ## 🔧 Setup
 Clone the repository and build the project:
 ```bash
-git clone https://github.com/your-username/hello-world-api.git && cd hello-world-api
+git clone https://github.com/AliaksandrMakaranka/rust_hello-api.git && cd rust_hello-api
 cargo build
 ```
 
